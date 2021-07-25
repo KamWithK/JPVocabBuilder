@@ -40,7 +40,7 @@
     <input type="file" id="fileInput" multiple class="visually-hidden" on:change={handleFiles}/>
     <label id="dropzone" for="fileInput" on:dragenter={update} on:dragover={update} on:drop={drop}>
         <h1>Drag Your Subtitles In for Analysis</h1>
-        <i id="symbol" class="fas fa-folder-open" data-fa-transform="rotate-20"></i>
+        <i id="symbol" class="fas fa-folder-open" data-fa-transform="rotate-20 down-1"></i>
     </label>
 </main>
 
