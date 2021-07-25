@@ -3,6 +3,10 @@ name = "jp_vocab_builder"
 version = "0.1.0"
 edition = "2018"
 
+[[bin]]
+name = "jp_vocab_builder"
+path = "src/rust/main.rs"
+
 [dependencies]
 tinysegmenter = "0.1"
 subparse = "0.7"
