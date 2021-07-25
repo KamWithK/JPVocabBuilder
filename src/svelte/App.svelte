@@ -10,6 +10,7 @@
 
 <main>
 	<h1>Japanese Vocab Builder</h1>
+	<h2>Learn Words which <em>Matter</em></h2>
 	<Dropzone on:file_read={onFilesSelected}/>
 </main>
 
@@ -29,5 +30,14 @@
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
+		margin-bottom: 0;
+	}
+
+	h2 {
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 2em;
+		font-weight: 500;
+		margin-top: 0;
 	}
 </style>

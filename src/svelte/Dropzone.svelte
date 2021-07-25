@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang='ts'>
     import '@fortawesome/fontawesome-free/js/brands.js';
     import '@fortawesome/fontawesome-free/js/solid.js';
     import '@fortawesome/fontawesome-free/js/fontawesome.js';
@@ -37,10 +37,20 @@
 </script>
 
 <main>
-    <input type="file" id="fileInput" multiple class="visually-hidden" on:change={handleFiles}/>
-    <label id="dropzone" for="fileInput" on:dragenter={update} on:dragover={update} on:drop={drop}>
-        <h1>Drag Your Subtitles In for Analysis</h1>
-        <i id="symbol" class="fas fa-folder-open" data-fa-transform="rotate-20 down-1"></i>
+    <input type='file' id='fileInput' multiple class='visually-hidden' on:change={handleFiles}/>
+    <label id='dropzone' for='fileInput' on:dragenter={update} on:dragover={update} on:drop={drop}>
+        <div>
+            <i id='symbol' class='fas fa-closed-captioning'></i>
+            <p>Drag in your Subtitles</p>
+        </div>
+        <div>
+            <i id='symbol' class='fas fa-file-contract'></i>
+            <p>Analyse the Language</p>
+        </div>
+        <div>
+            <i id='symbol' class='fas fa-sort-amount-down-alt'></i>
+            <p>Study Essential Words</p>
+        </div>
     </label>
 </main>
 
@@ -68,10 +78,14 @@
     #dropzone {
         height: 100%;
         width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
 		text-align: center;
+        margin-top: 50px;
     }
 
     #symbol {
-        font-size: 50vmin;
+        font-size: 30vmin;
     }
 </style>
