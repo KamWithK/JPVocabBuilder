@@ -1,10 +1,16 @@
+// @ts-ignore
+import rust from "../../Cargo.toml";
 import App from './App.svelte';
 
-const app = new App({
-	target: document.body,
-	props: {
-		name: 'world'
-	}
-});
+const init = async() => {
+  const wasm = await rust();
+  wasm.set_panic_hook(); // better debug messages
 
-export default app;
+  const app = new App({
+    target: document.body,
+    props: {}
+  });
+
+}
+
+init();

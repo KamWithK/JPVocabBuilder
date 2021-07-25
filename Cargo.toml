@@ -1,12 +1,33 @@
 [package]
 name = "jp_vocab_builder"
 version = "0.1.0"
+authors = ["Kamron Bhavnagri <kamwithk@tuta.io>"]
+description = "Prepare yourself for the latest Japanese shows by studying personalised vocab"
+repository = "https://github.com/KamWithK/JPVocabBuilder"
+license = "MIT"
 edition = "2018"
 
-[[bin]]
+[lib]
 name = "jp_vocab_builder"
-path = "src/rust/main.rs"
+path = "src/rust/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
 
 [dependencies]
+lazy_static = "1.4"
+
 tinysegmenter = "0.1"
 subparse = "0.7"
+
+wasm-bindgen = "0.2.74"
+wee_alloc = { version = "0.4.5", optional = true }
+console_error_panic_hook = { version = "0.1.6", optional = true }
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.13"
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
