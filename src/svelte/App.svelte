@@ -15,9 +15,9 @@
 	}
 </script>
 
-<main>
-	<h1>Japanese Vocab Builder</h1>
-	<h2>Learn Words which <em>Matter</em></h2>
+<main class="flex flex-col h-full w-full">
+	<h1 class='text-7xl text-red-400 uppercase font-thin text-center'>Japanese Vocab Builder</h1>
+	<h2 class='text-4xl text-gray-600 uppercase text-center mb-5'>Learn Words which <em>Matter</em></h2>
 	<Dropzone on:file_read={onFilesSelected}/>
 </main>
 
@@ -25,30 +25,4 @@
 	@tailwind base;
 	@tailwind components;
 	@tailwind utilities;
-	
-	main {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		height: 100%;
-		padding: 0 em;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-align: center;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-		margin-bottom: 0;
-	}
-
-	h2 {
-		text-align: center;
-		text-transform: uppercase;
-		font-size: 2em;
-		font-weight: 500;
-		margin-top: 0;
-	}
 </style>
