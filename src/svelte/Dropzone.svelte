@@ -4,11 +4,11 @@
     import '@fortawesome/fontawesome-free/js/fontawesome.js';
 
     import { createEventDispatcher } from 'svelte';
+    import Progressbar from './Progressbar.svelte';
 
     const dispatch = createEventDispatcher();
     let total_files = 0;
     let processed = 0;
-    let progress = 0;
 
 	async function handleFiles(event) {
         let files = event instanceof FileList ? event : event.target.files;
@@ -28,7 +28,6 @@
                 });
 
                 processed += 1;
-                progress = Math.round((processed / total_files) * 100) / 100;
             };
 		}
 	}
@@ -63,8 +62,7 @@
         </div>
     </div>
 
-    <progress class='h-5 w-2/5 self-center mt-20' value={progress}/>
-    <em>Processed {processed}/{total_files} Files</em>
+    <Progressbar total_files={total_files} processed={processed}/>
 </label>
 
 <style>
