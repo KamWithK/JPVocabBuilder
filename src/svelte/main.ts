@@ -8,9 +8,10 @@ const init = async() => {
 
   const app = new App({
     target: document.body,
-    props: {}
+    props: {
+      'wasm': wasm
+    }
   });
-
 }
 
 init();

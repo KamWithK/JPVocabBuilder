@@ -2,13 +2,7 @@
 	import rust from '../../Cargo.toml';
 	import Dropzone from './Dropzone.svelte';
 
-	let wasm;
-
-	async function init() {
-		wasm = await rust();
-	}
-
-	init();
+	export let wasm;
 
 	let current_stage = 'select';
 	function notThisPage(target) {
