@@ -2,8 +2,15 @@
 	import rust from '../../Cargo.toml';
 	import Dropzone from './Dropzone.svelte';
 
+	let wasm;
+
+	async function init() {
+		wasm = await rust();
+	}
+
+	init();
+
 	async function onFilesSelected(event) {
-		const wasm = await rust();
 		wasm.parse_subtitle(event.detail.content, event.detail.extention);
 	}
 </script>
