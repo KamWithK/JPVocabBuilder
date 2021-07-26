@@ -1,0 +1,73 @@
+// Modified version of: https://github.com/PSeitz/wana_kana_rust
+const CJK_SYMBOLS_PUNCTUATION: [u32; 2] = [0x3000, 0x303F];
+const KATAKANA_PUNCTUATION: [u32; 2] = [0x30FB, 0x30FC];
+const HIRAGANA_CHARS: [u32; 2] = [0x3040, 0x309F];
+const KATAKANA_CHARS: [u32; 2] = [0x30A0, 0x30FF];
+
+const ZENKAKU_NUMBERS: [u32; 2] = [0xFF10, 0xFF19];
+const ZENKAKU_PUNCTUATION_1: [u32; 2] = [0xFF01, 0xFF0F];
+const ZENKAKU_PUNCTUATION_2: [u32; 2] = [0xFF1A, 0xFF1F];
+const ZENKAKU_PUNCTUATION_3: [u32; 2] = [0xFF3B, 0xFF3F];
+const ZENKAKU_PUNCTUATION_4: [u32; 2] = [0xFF5B, 0xFF60];
+const ZENKAKU_UPPERCASE: [u32; 2] = [0xff21, 0xff3a];
+const ZENKAKU_LOWERCASE: [u32; 2] = [0xff41, 0xff5a];
+const ZENKAKU_SYMBOLS_CURRENCY: [u32; 2] = [0xFFE0, 0xFFEE];
+const KANA_PUNCTUATION: [u32; 2] = [0xFF61, 0xFF65];
+const HANKAKU_KATAKANA: [u32; 2] = [0xFF66, 0xFF9F];
+const COMMON_CJK: [u32; 2] = [0x4E00, 0x9FFF];
+const RARE_CJK: [u32; 2] = [0x3400, 0x4DBF];
+const LATIN_NUMBERS: [u32; 2] = [0x0030, 0x0039];
+const MODERN_ENGLISH: [u32; 2] = [0x0000, 0x007f];
+const HEPBURN_MACRON_1: [u32; 2] = [0x0100, 0x0101]; // Ā ā
+const HEPBURN_MACRON_2: [u32; 2] = [0x0112, 0x0113]; // Ē ē
+const HEPBURN_MACRON_3: [u32; 2] = [0x012a, 0x012b]; // Ī ī
+const HEPBURN_MACRON_4: [u32; 2] = [0x014c, 0x014d]; // Ō ō
+const HEPBURN_MACRON_5: [u32; 2] = [0x016a, 0x016b]; // Ū ū
+const SMART_QUOTE_1: [u32; 2] = [0x2018, 0x2019]; // ‘ ’
+const SMART_QUOTE_2: [u32; 2] = [0x201C, 0x201D]; // ‘ ’
+
+const UPPERCASE_START: u32 = 0x41;
+const UPPERCASE_END: u32 = 0x5A;
+const HIRAGANA_START: u32 = 0x3041;
+const HIRAGANA_END: u32 = 0x3096;
+const KATAKANA_START: u32 = 0x30A1;
+const KATAKANA_END: u32 = 0x30FC;
+const PROLONGED_SOUND_MARK: u32 = 0x30FC;
+const KANA_SLASH_DOT: u32 = 0x30FB;
+
+pub const JA_PUNCTUATION_RANGES: [[u32; 2]; 8] = [
+    CJK_SYMBOLS_PUNCTUATION,
+    KANA_PUNCTUATION,
+    KATAKANA_PUNCTUATION,
+    ZENKAKU_PUNCTUATION_1,
+    ZENKAKU_PUNCTUATION_2,
+    ZENKAKU_PUNCTUATION_3,
+    ZENKAKU_PUNCTUATION_4,
+    ZENKAKU_SYMBOLS_CURRENCY,
+];
+
+pub const KANA_RANGES: [[u32; 2]; 4] = [
+    HIRAGANA_CHARS,
+    KATAKANA_CHARS,
+    KANA_PUNCTUATION,
+    HANKAKU_KATAKANA,
+];
+
+// All Japanese unicode start and end ranges
+// Includes full-width punctuation and number ranges
+pub static JAPANESE_RANGES: [[u32; 2]; 17] = [
+    ZENKAKU_UPPERCASE, ZENKAKU_LOWERCASE, ZENKAKU_NUMBERS, COMMON_CJK, RARE_CJK,
+    HIRAGANA_CHARS, KATAKANA_CHARS, KANA_PUNCTUATION, HANKAKU_KATAKANA,
+    CJK_SYMBOLS_PUNCTUATION, KANA_PUNCTUATION, KATAKANA_PUNCTUATION, ZENKAKU_PUNCTUATION_1, ZENKAKU_PUNCTUATION_2, ZENKAKU_PUNCTUATION_3, ZENKAKU_PUNCTUATION_4, ZENKAKU_SYMBOLS_CURRENCY
+];
+
+// Basic Latin for Romaji + Hepburn romanisation
+// Includes upper/lowercase long vowels like "ā, ī, ū, ē, ō"
+pub static ROMAJI_RANGES: [[u32; 2]; 6] = [
+    MODERN_ENGLISH,
+    HEPBURN_MACRON_1, HEPBURN_MACRON_2, HEPBURN_MACRON_3, HEPBURN_MACRON_4, HEPBURN_MACRON_5,
+];
+pub static EN_PUNCTUATION_RANGES: [[u32; 2]; 6] = [
+    [0x20, 0x2F], [0x3A, 0x3F], [0x5B, 0x60], [0x7B, 0x7E],
+    SMART_QUOTE_1, SMART_QUOTE_2
+];

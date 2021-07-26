@@ -15,17 +15,11 @@
         total_files += files.length;
 
         for (var index = 0; index < files.length; index++) {
-			let file = files[index];
-			const extention = file.name.substring(file.name.lastIndexOf('.') + 1);
-
 			let reader = new FileReader();
-			reader.readAsText(file);
+			reader.readAsText(files[index]);
 
             reader.onload = e => {
-                dispatch('file_read', {
-                    content: e.target.result,
-                    extention: extention
-                });
+                dispatch('file_read', e.target.result);
 
                 processed += 1;
             };

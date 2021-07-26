@@ -16,7 +16,7 @@
 	}
 
 	async function onFilesSelected(event) {
-		wasm.parse_subtitle(event.detail.content, event.detail.extention);
+		wasm.parse_subtitle(event.detail);
 	}
 </script>
 
