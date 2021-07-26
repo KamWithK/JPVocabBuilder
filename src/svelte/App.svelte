@@ -21,7 +21,11 @@
 	<Dropzone on:file_read={onFilesSelected}/>
 </main>
 
-<style>
+<style global>
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+	
 	main {
 		display: flex;
 		flex-direction: column;
