@@ -7,8 +7,8 @@
     import Progressbar from './Progressbar.svelte';
 
     const dispatch = createEventDispatcher();
-    let total_files = 0;
-    let processed = 0;
+    export let total_files = 0;
+    export let processed = 0;
 
 	async function handleFiles(event) {
         let files = event instanceof FileList ? event : event.target.files;
