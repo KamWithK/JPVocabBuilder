@@ -20,8 +20,12 @@
 		
 		// doc.querySelectorAll('div.exact_block > div'); // no concepts
 		return map(doc.querySelectorAll('#primary > div > div'), entry => {
-			let furigana = entry.querySelector('span.furigana > span, rt').textContent.trim();
 			let kanji = entry.querySelector('.concept_light-representation > span.text').textContent.trim();
+			let furigana = entry.querySelector('span.furigana > span, rt').textContent.trim();
+			if (furigana == '') {
+				furigana = kanji;
+				kanji = '';
+			}
 
 			let entries = map(entry.querySelectorAll('.meanings-wrapper'), meaningEntry => {
 				let types = getIterableText(meaningEntry.querySelectorAll('.meaning-tags'));
@@ -81,7 +85,7 @@
 	}
 	
 	words.forEach(element => {
-		scrape(element.word).catch(_ => console.log(element.word));
+		scrape(element.word).then(result => console.log(element.word, result)).catch(_ => console.log(element.word));
 	});
 </script>
 
