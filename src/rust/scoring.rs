@@ -32,24 +32,8 @@ impl Scoreboard {
         }
     }
 
-    pub fn top_words(&self) -> Vec<&Word> {
-        let (mut min_frequency, mut min_index) = (usize::MAX, 0);
-        let mut top_words: Vec<&Word> = Vec::default();
-
-        for item in &self.words {
-            if top_words.len() < self.limit {
-                top_words.push(item);
-
-                if item.frequency < min_frequency {
-                    min_frequency = item.frequency;
-                    min_index = top_words.len() - 1;
-                }
-            } else if item.frequency > min_frequency {
-                let _ = std::mem::replace(&mut top_words[min_index], item);
-                min_frequency = item.frequency;
-            }
-        }
-
-        top_words
+    pub fn top_words(&mut self) -> &[Word] {
+        self.words.sort_by(|word_one, word_two| word_two.frequency.cmp(&word_one.frequency));
+        &self.words[..self.limit]
     }
 }
