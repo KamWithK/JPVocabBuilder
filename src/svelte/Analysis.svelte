@@ -17,10 +17,10 @@
 	
 	async function scrape(search) {
 		let doc = parser.parseFromString(await (await fetch(BASE_URL + search + '%23words')).text(), 'text/html');
-		// let entries = doc.querySelectorAll('div.exact_block > div'); // no concepts
-
+		
+		// doc.querySelectorAll('div.exact_block > div'); // no concepts
 		return map(doc.querySelectorAll('#primary > div > div'), entry => {
-			let furigana = entry.querySelector('span.furigana > span').textContent.trim();
+			let furigana = entry.querySelector('span.furigana > span, rt').textContent.trim();
 			let kanji = entry.querySelector('.concept_light-representation > span.text').textContent.trim();
 
 			let entries = map(entry.querySelectorAll('.meanings-wrapper'), meaningEntry => {
@@ -79,8 +79,10 @@
 			}
 		})
 	}
-
-	scrape('きみ').then(result => console.log(result));
+	
+	words.forEach(element => {
+		scrape(element.word).catch(_ => console.log(element.word));
+	});
 </script>
 
 <div class='flex flex-col self-center text-center'>
