@@ -1,3 +1,5 @@
+use crate::text_filter::relevant;
+
 pub struct Word {
     pub word: String,
     pub frequency: usize
@@ -18,9 +20,9 @@ pub struct Scoreboard {
 }
 
 impl Scoreboard {
-    pub fn request_add(&mut self, word: String) {
+    pub fn request_add(&mut self, word: &str) {
         // Add new words and update existing ones frequency
-        if self.words.iter_mut().all(|item| {
+        if relevant(word) && self.words.iter_mut().all(|item| {
             let found = item.word == word;
             if found {
                 item.frequency += 1;
@@ -28,7 +30,7 @@ impl Scoreboard {
 
             !found
         }) {
-            self.words.push(Word::new(word, 1));
+            self.words.push(Word::new(word.to_string(), 1));
         }
     }
 

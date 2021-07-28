@@ -10,7 +10,7 @@ use std::sync::Mutex;
 use lazy_static::lazy_static;
 
 use tinysegmenter::tokenize;
-use text_filter::keep_japanese;
+use text_filter::is_japanese;
 
 use wasm_bindgen::prelude::wasm_bindgen;
 
@@ -33,7 +33,7 @@ extern {
 
 #[wasm_bindgen]
 pub fn parse_subtitle(content: &str) {
-    tokenize(&keep_japanese(content)).iter().for_each(|word| SCOREBOARD.lock().unwrap().request_add(word.to_string()));
+    tokenize(&is_japanese(content)).iter().for_each(|word| SCOREBOARD.lock().unwrap().request_add(word.trim()));
 }
 
 #[wasm_bindgen]
