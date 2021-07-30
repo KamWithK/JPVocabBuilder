@@ -115,35 +115,38 @@
 				<div class='flex flex-col w-full items-center'>
 					<div class='flex flex-row items-end p-5'>
 						{#each results[0]['sentence'] as sentence}
-							<div class='text-5xl'>
-								<p>{sentence['furigana']}</p>
-								<p>{sentence['kanji']}</p>
+							<div>
+								<p class='text-3xl'>{sentence['furigana']}</p>
+								<p class='text-5xl'>{sentence['kanji']}</p>
 							</div>
 						{/each}
 					</div>
 				</div>
 				<div>
-					<p class='bg-yellow-600'>{search}</p>
+					<p class='bg-yellow-300'>{search}</p>
 					<p class='bg-red-600'>{results[0]['frequency']}</p>
 				</div>
 			</div>
 			
-			<div class='flex flex-col w-full items-center rounded-b-lg bg-red-400'>
+			<div class='flex flex-col w-full p-3 items-center rounded-b-lg bg-red-400'>
 				{#each results[0]['entries'] as entry}
 					<div class='w-9/12'>
 						{#each entry as meaning}
-							<div class='flex flex-row p-3 items-center text-xs'>
-								<p class='bg-blue-300'>{meaning['types']}</p>
-								<div class='px-3 text-base'>
+							<div class='flex flex-row items-center text-xs p-1'>
+								<p class='font-bold p-3 bg-blue-300 rounded-lg'>{meaning['types']}</p>
+								<div class='text-lg'>
 									{#each meaning['definition'] as definition}
-										<p>{definition}</p>
+										<p class='p-3'>{definition}</p>
 									{/each}
 								</div>
-								<div class='bg-yellow-300'>
-									{#each meaning['senses'] as sense}
-										<p>{sense}</p>
-									{/each}
-								</div>
+
+								{#if meaning['senses'].length != 0}
+									<div class='p-3 bg-yellow-200 rounded-lg'>
+										{#each meaning['senses'] as sense}
+											<p class='text-sm leading-none'>{sense}</p>
+										{/each}
+									</div>
+								{/if}
 							</div>
 						{/each}
 					</div>
