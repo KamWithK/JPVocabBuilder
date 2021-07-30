@@ -36,6 +36,11 @@ impl Scoreboard {
 
     pub fn top_words(&mut self) -> &[Word] {
         self.words.sort_by(|word_one, word_two| word_two.frequency.cmp(&word_one.frequency));
-        &self.words[..self.limit]
+
+        if self.limit < self.words.len() {
+            &self.words[..self.limit]
+        } else {
+            &self.words
+        }
     }
 }

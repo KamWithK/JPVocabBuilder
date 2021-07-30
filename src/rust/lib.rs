@@ -22,7 +22,7 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 lazy_static! {
     static ref SCOREBOARD: Arc<Mutex<Scoreboard>> = Arc::new(Mutex::new(Scoreboard {
-        limit: 100,
+        limit: 1000,
         words: Vec::default()
     }));
 }
